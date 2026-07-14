@@ -5,7 +5,7 @@ A responsive one-page website for a Rawalpindi law practice. The visual system u
 ## Files
 
 - `index.html`: website content, accessibility structure and search metadata
-- `styles.css`: full responsive design and motion
+- `styles-mobile-v3.css`: full responsive design, motion and cache-proof mobile navigation fix
 - `script.js`: mobile navigation, section highlighting, reveal effects and consultation form behavior
 - `assets/asad-ullah-malik.webp`: optimized lawyer portrait
 - `assets/favicon.svg`: scales-of-justice browser icon

@@ -339,6 +339,11 @@ h3 {
   gap: 30px;
 }
 
+.mobile-menu-heading,
+.mobile-call-link {
+  display: none;
+}
+
 .nav-link {
   position: relative;
   padding: 10px 0;
@@ -1771,6 +1776,10 @@ h3 {
     display: block;
   }
 
+  .site-header.menu-active {
+    backdrop-filter: none;
+  }
+
   .menu-toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
@@ -1784,19 +1793,30 @@ h3 {
   }
 
   .primary-navigation {
-    position: fixed;
-    top: 76px;
+    position: absolute;
+    z-index: 1100;
+    top: 100%;
     right: 0;
-    bottom: 0;
+    bottom: auto;
     left: 0;
     display: flex;
-    padding: 40px 24px 48px;
+    width: 100%;
+    height: calc(100vh - 76px);
+    height: calc(100dvh - 76px);
+    padding: 28px 18px calc(28px + env(safe-area-inset-bottom));
     align-items: stretch;
     flex-direction: column;
-    gap: 0;
+    gap: 10px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    isolation: isolate;
+    background-color: #12181f;
     background:
-      radial-gradient(circle at 90% 0, rgba(74, 16, 32, 0.65), transparent 38%),
+      linear-gradient(rgba(18, 24, 31, 0.96), rgba(18, 24, 31, 0.98)),
+      radial-gradient(circle at 88% 0, rgba(116, 34, 52, 0.9), transparent 42%),
       #12181f;
+    border-top: 1px solid rgba(200, 164, 97, 0.22);
+    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-12px);
@@ -1809,22 +1829,129 @@ h3 {
     transform: translateY(0);
   }
 
-  .nav-link {
-    padding: 17px 5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  .mobile-menu-heading {
+    display: flex;
+    margin-bottom: 5px;
+    padding: 2px 3px 13px;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-menu-heading small {
+    color: var(--gold-light);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-heading strong {
+    color: rgba(255, 255, 255, 0.54);
     font-family: var(--serif);
-    font-size: 1.45rem;
+    font-size: 0.88rem;
+    font-weight: 400;
+  }
+
+  .nav-link {
+    display: flex;
+    min-height: 62px;
+    padding: 0 18px;
+    align-items: center;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    font-family: var(--serif);
+    font-size: 1.13rem;
     font-weight: 400;
     letter-spacing: 0;
     text-transform: none;
+    transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .nav-link:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(200, 164, 97, 0.45);
+    transform: translateX(3px);
+  }
+
+  .nav-link.active {
+    color: var(--ink);
+    background: var(--gold-light);
+    border-color: var(--gold-light);
   }
 
   .nav-link::after {
-    display: none;
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    color: var(--gold-light);
+    background: none;
+    content: "→";
+    font-family: var(--sans);
+    font-size: 1rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav-link.active::after {
+    color: var(--ink);
+    transform: none;
   }
 
   .primary-navigation .button {
-    margin-top: 28px;
+    min-height: 62px;
+    margin-top: 5px;
+    box-shadow: 0 14px 30px rgba(200, 164, 97, 0.2);
+    font-size: 0.7rem;
+  }
+
+  .mobile-call-link {
+    display: flex;
+    min-height: 67px;
+    margin-top: 0;
+    padding: 10px 17px;
+    align-items: center;
+    gap: 14px;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-call-link > svg {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: var(--gold-light);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+  }
+
+  .mobile-call-link span,
+  .mobile-call-link small,
+  .mobile-call-link strong {
+    display: block;
+  }
+
+  .mobile-call-link small {
+    margin-bottom: 2px;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 0.54rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .mobile-call-link strong {
+    color: var(--white);
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 400;
   }
 
   .hero {
