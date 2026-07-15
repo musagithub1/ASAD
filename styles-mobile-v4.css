@@ -921,62 +921,46 @@ h3 {
   overflow: hidden;
 }
 
-.monogram-panel {
+.partner-photo {
   position: relative;
-  display: grid;
-  min-height: 235px;
-  place-content: center;
-  color: var(--gold-light);
-  background:
-    radial-gradient(circle, rgba(200, 164, 97, 0.12) 0 1px, transparent 1.5px) 0 0 / 16px 16px,
-    linear-gradient(135deg, var(--ink), #252b31);
-  text-align: center;
+  height: 280px;
+  min-height: 280px;
+  overflow: hidden;
+  background: #dbe5f2;
 }
 
-.monogram-panel::before,
-.monogram-panel::after {
+.partner-photo::before {
   position: absolute;
-  border: 1px solid rgba(200, 164, 97, 0.3);
+  z-index: 2;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  content: "";
+  pointer-events: none;
+}
+
+.partner-photo::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 42%;
+  background: linear-gradient(to bottom, transparent, rgba(12, 18, 25, 0.55));
   content: "";
 }
 
-.monogram-panel::before {
-  inset: 18px;
+.partner-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
 }
 
-.monogram-panel::after {
-  inset: 28px;
-}
-
-.monogram-panel strong {
-  position: relative;
-  z-index: 2;
-  font-family: var(--serif);
-  font-size: 4.3rem;
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.monogram-panel small {
-  position: relative;
-  z-index: 2;
-  margin-top: 10px;
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-}
-
-.monogram-rings {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  border: 1px solid rgba(200, 164, 97, 0.26);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+.partner-photo .photo-label {
+  right: 18px;
+  bottom: 16px;
+  left: auto;
+  min-width: 174px;
+  padding: 9px 13px;
 }
 
 .counsel-card-secondary .counsel-details {
@@ -1745,7 +1729,8 @@ h3 {
     grid-template-columns: 0.65fr 1.35fr;
   }
 
-  .monogram-panel {
+  .partner-photo {
+    height: 380px;
     min-height: 380px;
   }
 
@@ -2185,8 +2170,9 @@ h3 {
     font-size: 2.25rem;
   }
 
-  .monogram-panel {
-    min-height: 250px;
+  .partner-photo {
+    height: 480px;
+    min-height: 480px;
   }
 
   .practice-grid {
